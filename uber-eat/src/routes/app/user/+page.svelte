@@ -1,20 +1,24 @@
 <script lang="ts">
     import { Card, Input, Label, Helper, Button } from "flowbite-svelte";
+
+	export let data;
+	export let form;
 </script>
 
 <h1 class="text-3xl font-bold mb-5">Mon compte</h1>
 
 <h2 class="mb-2 text-sm">Informations personnelles</h2>
 <Card size="lg" padding="md">
-    <form action="POST">
+    <form method="POST" action="?/update">
+		<input type="hidden" name="id" value={data.user.id ?? ''}>
         <div class="mb-3">
 			<Label for="email" class="mb-1">Email</Label>
-			<Input type="email" id="email" name="email" placeholder="Votre email" autocomplete="username" />
+			<Input type="email" id="email" name="email" value={data.user.user.identifier ?? ''} autocomplete="email" placeholder="Votre email" />
 		</div>
 	
 		<div>
 			<Label for="password" class="mb-1">Mot de passe</Label>
-			<Input type="password" id="current_password" name="current_password" placeholder="Votre mot de passe"  autocomplete="current-password" />
+			<Input type="password" id="current_password" name="current_password" autocomplete="password" value={''} placeholder="Votre mot de passe" />
 		</div>
 		
 		<div class="flex items-center justify-between mt-5">
@@ -33,3 +37,9 @@
 		</div>
     </form>
 </Card>
+
+<form method="POST" action="?/logout">
+	<Button type="submit" class="w-full mt-5">
+		Déconnexion
+	</Button>
+</form>

@@ -17,6 +17,7 @@ export async function load({ cookies }) {
         return {restaurants};
 
     } catch (err) {
-        redirect(302, '/auth/login');
+        cookies.delete('user_token', { path: '/' });
+        redirect(302, '/auth/login')
     }
 }

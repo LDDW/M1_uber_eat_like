@@ -4,11 +4,10 @@
     const user = {
         identifier: 'customer10@ubereatlike.logan-eono.fr',
         password: 'apassword'
-    }
+    } 
 	
 	export let data;
 	export let form;
-
 </script>
 
 <svelte:head>

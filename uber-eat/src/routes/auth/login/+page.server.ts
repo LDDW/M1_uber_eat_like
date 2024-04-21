@@ -7,7 +7,7 @@ export function load({cookies}) {
     if (cookies.get('user_token')) {
         return redirect(302,'/app');
     }
-}  
+}
 
 export const actions = {
     default: async ({cookies, request}) => {
@@ -39,6 +39,8 @@ export const actions = {
                 path: '/',
                 expires: remainingDuration
             });
+
+            redirect(302,'/app');
 
         } catch (err) {
             console.log(err);
