@@ -7,7 +7,7 @@
 
 <h1 class="text-3xl font-bold mb-5">Restaurants</h1>
 <div class="flex items-center flex-col gap-5">
-    {#if data}
+    {#if data.restaurants.length > 0}
         {#each data.restaurants as restaurant, index}
             <a href={"app/restaurant/"+ restaurant.id} class="w-full">
                 <Card img="https://picsum.photos/300/100" size="lg" padding="md"> 
@@ -18,5 +18,7 @@
                 </Card>
             </a>
         {/each}
+    {:else}
+        <p>Aucun restaurant disponible</p>
     {/if}
 </div>

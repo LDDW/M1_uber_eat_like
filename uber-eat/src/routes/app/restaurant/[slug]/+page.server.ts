@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export async function load({ params, cookies }) {
     try {
-
         const restaurant = await getRestaurant(params.slug, cookies);
         const menus = await getMenus(params.slug,cookies);
         const dishes = await getDishes(params.slug,cookies);
@@ -24,7 +23,7 @@ async function getMenus(id_restaurant: number, cookies: any) 
 {
     return await axios({
         method: 'GET',
-        url: `https://ubereatlike-api.logan-eono.fr/api/menus?restaurant.id=${id_restaurant}`,
+        url: `https://ubereatlike-api.logan-eono.fr/api/restaurants/${id_restaurant}/menus`,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${cookies.get('user_token')}`
@@ -36,7 +35,7 @@ async function getDishes(id_restaurant: number, cookies: any)
 {
     return await axios({
         method: 'GET',
-        url: `https://ubereatlike-api.logan-eono.fr/api/dishes?restaurant.id=${id_restaurant}`,
+        url: `https://ubereatlike-api.logan-eono.fr/api/restaurants/${id_restaurant}/dishes`,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${cookies.get('user_token')}`

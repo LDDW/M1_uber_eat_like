@@ -3,7 +3,7 @@
 	
     const user = {
         identifier: 'customer10@ubereatlike.logan-eono.fr',
-        password: 'apassword'
+        password: 'password'
     } 
 	
 	export let data;
