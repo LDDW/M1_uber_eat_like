@@ -2,15 +2,10 @@ import { error } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+import { cart } from '../../../lib/stores/cart';
 
 export async function load({cookies}) {
     try {
-
-        // const token = cookies.get('user_token');
-        // const decoded = jwt.decode(token, {complete: true});
-
-        // console.log(decoded)
-
         const deliveries = await axios({
             method: 'GET',
             url: `https://ubereatlike-api.logan-eono.fr/api/deliveries`,
@@ -20,8 +15,6 @@ export async function load({cookies}) {
             }
         })
 
-        console.log(deliveries.data['hydra:member'])
-
         return {
             deliveries: deliveries.data['hydra:member']
         }
@@ -30,8 +23,4 @@ export async function load({cookies}) {
         cookies.delete('user_token', { path: '/' });
         redirect(302, '/auth/login')
     }
-}
-
-export const actions = {
-
 }
