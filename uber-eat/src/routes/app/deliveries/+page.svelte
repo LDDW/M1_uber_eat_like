@@ -11,12 +11,10 @@
         <a href={"restaurant/"+ restaurant.restaurant.id}>
             <Card size="lg" padding="md" class="my-5"> 
                 <div class="justify-between">
-
                     <div class="flex justify-between">
                         <p class="font-bold text-gray-900">{restaurant.restaurant.name}</p>
                         <p>Total : {$cart.filter(item => item.restaurant.id === restaurant.restaurant.id).reduce((acc, item) => acc + item.products.reduce((acc, product) => acc + product.price, 0), 0).toFixed(2)}€</p>
                     </div>
-
                     <Button color="primary" size="sm" class="mt-5">Voir le contenu du panier</Button>
                 </div>
             </Card>
@@ -35,6 +33,13 @@
 
                 <Card size="lg" padding="md" class="my-5">
                     <p>#{deliverie.id} - {deliverie.restaurant.name}</p>
+                    <p>{deliverie.orderItems.reduce((acc, orderItem) => {
+                        if (orderItem.menu !== undefined) {
+                            return acc + orderItem.menu.price;
+                        } else if (orderItem.dish !== undefined) {
+                            return acc + orderItem.dish.price;
+                        }
+                    }, 0)} €</p>
                     <p>{deliverie.status}</p>
                     <Button color="primary" size="sm" class="mt-5 w-full">Voir le détail de la commande</Button>
                 </Card>

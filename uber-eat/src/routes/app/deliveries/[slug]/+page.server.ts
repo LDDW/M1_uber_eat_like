@@ -1,7 +1,6 @@
-import { error, redirect } from "@sveltejs/kit";
 import axios from "axios";
 
-export async function load({ params, request, cookies }) {
+export async function load({ params, cookies }) {
   try {
     const deliverie = await axios({
       method: "GET",
@@ -16,13 +15,6 @@ export async function load({ params, request, cookies }) {
       deliverie: deliverie.data,
     };
   } catch (error) {
-    cookies.delete("user_token", { path: "/" });
-    redirect(302, "/auth/login");
-  }
-}
-
-export const actions = {
-  default: async ({ params, request, cookies }) => {
-    
+    console.log(error);
   }
 }
