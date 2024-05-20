@@ -18,7 +18,6 @@ export async function load({cookies}) {
                 }
             }
         );
-        console.log(res);
 
         return {user: res.data['hydra:member'][0]};
 

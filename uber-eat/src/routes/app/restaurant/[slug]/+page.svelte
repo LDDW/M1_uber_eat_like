@@ -13,7 +13,6 @@
             } else {
                 items = [...items, {restaurant, products: [product]}];
             }
-            console.log(items)
             return items;
         })
 	}
@@ -30,7 +29,6 @@
                     }
                 })
             }
-            console.log(items)
             return items;
         })
     }

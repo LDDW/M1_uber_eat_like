@@ -4,7 +4,6 @@
     import { Map, MapStyle, Marker, clearPrewarmedResources, config } from '@maptiler/sdk';
     import "@maptiler/sdk/dist/maptiler-sdk.css";
     export let data;
-    console.log(data);
 
     config.apiKey = '3hFNWoIIe1JGUrXOopCD';
 
